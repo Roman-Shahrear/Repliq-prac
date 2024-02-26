@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./Pages/Cart";
+import CheckOut from "./Pages/CheckOut";
 
 
 
@@ -8,8 +9,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/men" element={<ShopCategory category="men"/>} /> */}
           <Route path="/cart" element={<Cart />} />
+          <Route path="/payment" element={<CheckOut />} />
         </Routes>
       </BrowserRouter>
     </div>

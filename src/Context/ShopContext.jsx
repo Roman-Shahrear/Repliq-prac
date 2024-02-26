@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import all_product from "../Components/Assets/all_product";
 
+
 export const ShopContext = createContext(null);
 
 const getDefaultCart = () => {
@@ -63,15 +64,52 @@ const ShopContextProvider = (props) => {
     };
 
 
+    const getTaxValue = () => {
+      return 0.25 * getTotalCartAmount();
+    };
+  
+    const getShippingFeeValue = () => {
+      const hasItemsInCart = getTotalCartQuantity() > 0;
+      return hasItemsInCart ? 20 : 0;
+    };
+  
+    const getDiscountValue = () => {
+      return 0.08 * getTotalCartAmount();
+    };
+
+
+    const totalCalculate = () => {
+      const subtotal = getTotalCartAmount();
+      const tax = 0.25 * subtotal;
+      const shippingFee = getShippingFeeValue();
+      const discount = 0.08 * subtotal;
+  
+      const total = subtotal + tax + shippingFee - discount;
+  
+      return {
+        subtotal,
+        tax,
+        shippingFee,
+        discount,
+        total,
+      };
+    };
+
     useEffect(() => {}, [cartItems]);
 
     const contextValue = {
+        all_product,
         cartItems,
         addToCart,
         removeFromCart,
         getTotalCartAmount,
         getTotalCartQuantity,
         deleteFromCartList,
+        getTaxValue,
+        getShippingFeeValue,
+        getDiscountValue,
+        totalCalculate,
+
     };
 
   return (
