@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./Pages/Cart";
 import CheckOut from "./Pages/CheckOut";
+import ShowProduct from "./Pages/ShowProduct";
 
 
 
@@ -9,7 +10,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Cart />} />
+          <Route path="/" element={<ShowProduct />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<CheckOut />} />
         </Routes>
       </BrowserRouter>

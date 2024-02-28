@@ -386,7 +386,7 @@ export default function CartItems() {
             </Link>
           </div>
         </div>
-      </div>
+  </div>  
     </>
   );
 }
